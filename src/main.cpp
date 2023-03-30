@@ -91,16 +91,6 @@ void onPublish(char *topic, byte *payload, unsigned int length)
   Serial.println();
 }
 
-void onSubscribe(int packetId, int qos)
-
-{
-  Serial.println("Subscribe acknowledged.");
-  Serial.print("  packetId: ");
-  Serial.println(packetId);
-  Serial.print("  qos: ");
-  Serial.println(qos);
-}
-
 void Cek_kondisi()
 {
   // Read data from DHT11 sensor
@@ -168,7 +158,7 @@ void Cek_kondisi()
     digitalWrite(LED_2, LOW);
     Serial.println("LED_2 OFF");
   }
-  if (temperature > 28 && humidity < 60)
+  if (temperature < 28 && humidity < 60)
   {
     digitalWrite(LED_3, HIGH);
     Serial.println("LED_3 ON");
